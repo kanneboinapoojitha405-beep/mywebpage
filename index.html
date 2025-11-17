@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientific Calculator</title>
+<style>
+body{
+    background:#e6e6e6;
+    display:flex;
+    justify-content:center;
+    padding:25px;
+    font-family: "Segoe UI", Arial;
+}
+.wrap{
+    width:380px;
+    background:#222;
+    padding:20px;
+    border-radius:18px;
+    color:white;
+}
+.title{
+    text-align:center;
+    font-size:22px;
+    margin-bottom:12px;
+}
+.screen{
+    background:#111;
+    padding:15px;
+    border-radius:12px;
+    font-size:22px;
+    text-align:right;
+    color:#eee;
+}
+
+.pad{
+    margin-top:18px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+}
+
+.btn{
+    background:#333;
+    color:white;
+    border:none;
+    padding:13px 6px;
+    border-radius:10px;
+    font-size:14px;
+    text-align:center;
+    text-decoration:none;
+    box-shadow:0 3px 8px rgba(0,0,0,0.4);
+}
+.op{ background:#ff9f1a; color:black; font-weight:bold; }
+.ac{ background:#d93b3b; }
+.equal{ background:#2fb45f; font-weight:bold; }
+
+.explain{
+    margin-top:20px;
+    background:#111;
+    padding:14px;
+    border-radius:12px;
+    min-height:150px;
+}
+
+.explain-box{ display:none; }
+.explain-box:target{ display:block; }
+
+.explain h3{ color:#ffd27a; margin:0; font-size:18px; }
+.explain p{ color:#ddd; font-size:14px; margin-top:8px; line-height:1.4; }
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+    <div class="title">SCIENTIFIC CALCULATOR</div>
+
+    <div class="screen">0</div>
+
+    <div class="pad">
+
+        <!-- TRIGONOMETRY -->
+        <a href="#sin" class="btn">sin</a>
+        <a href="#cos" class="btn">cos</a>
+        <a href="#tan" class="btn">tan</a>
+        <a href="#asin" class="btn">sin⁻¹</a>
+        <a href="#acos" class="btn">cos⁻¹</a>
+
+        <a href="#atan" class="btn">tan⁻¹</a>
+        <a href="#sec" class="btn">sec</a>
+        <a href="#csc" class="btn">csc</a>
+        <a href="#cot" class="btn">cot</a>
+        <a href="#pi" class="btn">π</a>
+
+        <!-- HYPERBOLIC -->
+        <a href="#sinh" class="btn">sinh</a>
+        <a href="#cosh" class="btn">cosh</a>
+        <a href="#tanh" class="btn">tanh</a>
+        <a href="#asinh" class="btn">sinh⁻¹</a>
+        <a href="#acosh" class="btn">cosh⁻¹</a>
+
+        <a href="#atanh" class="btn">tanh⁻¹</a>
+        <a href="#log" class="btn">log</a>
+        <a href="#ln" class="btn">ln</a>
+        <a href="#logx" class="btn">logₓ</a>
+        <a href="#sqrt" class="btn">√</a>
+
+        <!-- ALGEBRA -->
+        <a href="#x2" class="btn">x²</a>
+        <a href="#x3" class="btn">x³</a>
+        <a href="#xy" class="btn">xʸ</a>
+        <a href="#mod" class="btn">mod</a>
+        <a href="#e" class="btn">e</a>
+
+        <!-- CALCULUS -->
+        <a href="#diff" class="btn">d/dx</a>
+        <a href="#integ" class="btn">∫</a>
+        <a href="#percent" class="btn op">%</a>
+        <a href="#ac" class="btn ac">AC</a>
+        <a href="#fact" class="btn">!</a>
+
+        <!-- NUMBERS-->
+        <a href="#7" class="btn">7</a>
+        <a href="#8" class="btn">8</a>
+        <a href="#9" class="btn">9</a>
+        <a href="#div" class="btn op">÷</a>
+        <a href="#mul" class="btn op">×</a>
+
+        <a href="#4" class="btn">4</a>
+        <a href="#5" class="btn">5</a>
+        <a href="#6" class="btn">6</a>
+        <a href="#minus" class="btn op">−</a>
+        <a href="#plus" class="btn op">+</a>
+
+        <a href="#1" class="btn">1</a>
+        <a href="#2" class="btn">2</a>
+        <a href="#3" class="btn">3</a>
+        <a href="#equal" class="btn equal">=</a>
+        <a href="#dot" class="btn">.</a>
+
+        <a href="#0" class="btn" style="grid-column:span 2">0</a>
+
+    </div>
+
+    <div class="explain">
+
+        <!-- ========== TRIGONOMETRY ========== -->
+
+        <div class="explain-box" id="sin"> <h3>sin θ — Sine</h3> 
+          <p>sinθ = Opposite / Hypotenuse.<br>Example: sin(30°)=0.5</p>
+         </div> 
+         <div class="explain-box" id="cos"> <h3>cos θ — Cosine</h3> 
+          <p>cosθ = Adjacent / Hypotenuse.
+          <br>Example: cos(60°)=0.5</p> </div>
+
+  
+
+        <div class="explain-box" id="tan">
+            <h3>tan θ — Tangent</h3>
+            <p>tanθ = Opposite / Adjacent.<br>Example: tan(45°)=1</p>
+        </div>
+
+        <div class="explain-box" id="asin">
+            <h3>sin⁻¹ x — Inverse Sine</h3>
+            <p>Gives angle whose sine value is x.<br>Example: sin⁻¹(0.5)=30°</p>
+        </div>
+
+        <div class="explain-box" id="acos">
+            <h3>cos⁻¹ x — Inverse Cosine</h3>
+            <p>Angle whose cosine = x.</p>
+        </div>
+
+        <div class="explain-box" id="atan">
+            <h3>tan⁻¹ x — Inverse Tangent</h3>
+            <p>Angle whose tangent = x.</p>
+        </div>
+
+        <div class="explain-box" id="sec">
+            <h3>sec θ — Secant</h3>
+            <p>secθ = 1 / cosθ</p>
+        </div>
+
+        <div class="explain-box" id="csc">
+            <h3>csc θ — Cosecant</h3>
+            <p>cscθ = 1 / sinθ</p>
+        </div>
+
+        <div class="explain-box" id="cot">
+            <h3>cot θ — Cotangent</h3>
+            <p>cotθ = 1 / tanθ</p>
+        </div>
+
+        <!-- ========== HYPERBOLIC ========== -->
+
+        <div class="explain-box" id="sinh">
+            <h3>sinh x — Hyperbolic Sine</h3>
+            <p>sinh x = (eˣ − e⁻ˣ) / 2</p>
+        </div>
+
+        <div class="explain-box" id="cosh">
+            <h3>cosh x — Hyperbolic Cosine</h3>
+            <p>cosh x = (eˣ + e⁻ˣ) / 2</p>
+        </div>
+
+        <div class="explain-box" id="tanh">
+            <h3>tanh x — Hyperbolic Tangent</h3>
+            <p>tanh x = sinh x / cosh x</p>
+        </div>
+
+        <div class="explain-box" id="asinh">
+            <h3>sinh⁻¹ x — Inverse Hyperbolic Sine</h3>
+            <p>asinh(x) = ln(x + √(x²+1))</p>
+        </div>
+
+        <div class="explain-box" id="acosh">
+            <h3>cosh⁻¹ x — Inverse Hyperbolic Cosine</h3>
+            <p>acosh(x) = ln(x + √(x−1)(x+1))</p>
+        </div>
+
+        <div class="explain-box" id="atanh">
+            <h3>tanh⁻¹ x — Inverse Hyperbolic Tangent</h3>
+            <p>atanh(x)=½ ln((1+x)/(1−x))</p>
+        </div>
+
+        <!-- ========== LOGARITHMIC ========== -->
+
+        <div class="explain-box" id="log">
+            <h3>log₁₀ x — Common Logarithm</h3>
+            <p>log base 10.<br>Example: log(100)=2</p>
+        </div>
+
+        <div class="explain-box" id="ln">
+            <h3>ln x — Natural Logarithm</h3>
+            <p>Log base e.<br>ln(e)=1</p>
+        </div>
+
+        <div class="explain-box" id="logx">
+            <h3>logₓ y — Log Base x</h3>
+            <p>logₓ(y)= ln(y) / ln(x)</p>
+        </div>
+
+        <!-- ========== ALGEBRA ========== -->
+
+        <div class="explain-box" id="sqrt">
+            <h3>√x — Square Root</h3>
+            <p>Value which squared gives x.</p>
+        </div>
+
+        <div class="explain-box" id="x2">
+            <h3>x² — Square</h3>
+            <p>x × x</p>
+        </div>
+
+        <div class="explain-box" id="x3">
+            <h3>x³ — Cube</h3>
+            <p>x × x × x</p>
+        </div>
+
+        <div class="explain-box" id="xy">
+            <h3>xʸ — Power</h3>
+            <p>x raised to exponent y.</p>
+        </div>
+
+        <div class="explain-box" id="mod">
+            <h3>Mod — Remainder</h3>
+            <p>Gives remainder of division.</p>
+        </div>
+
+        <div class="explain-box" id="e">
+            <h3>e — Euler's Number</h3>
+            <p>e = 2.718<br>Used in exponential growth, logs, calculus.</p>
+        </div>
+
+        <div class="explain-box" id="fact">
+            <h3>n! — Factorial</h3>
+            <p>n! = n × (n−1) × ... × 1</p>
+        </div>
+
+        <!-- ========== CALCULUS ========== -->
+
+        <div class="explain-box" id="diff">
+            <h3>d/dx — Differentiation</h3>
+            <p>
+                Derivative gives rate of change.<br><br>
+                Examples:<br>
+                d/dx (x²) = 2x<br>
+                d/dx (sin x) = cos x
+            </p>
+        </div>
+
+        <div class="explain-box" id="integ">
+            <h3>∫ — Integration</h3>
+            <p>
+                Integral gives area under curve.<br><br>
+                Examples:<br>
+                ∫ x dx = x²/2<br>
+                ∫ cos x dx = sin x
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
